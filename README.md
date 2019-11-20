@@ -12,14 +12,14 @@ This stackathon project is a video game called Asteroid Fields. The project was 
 
 [Photonstorm](https://github.com/photonstorm/phaser3-project-template)
 
-## Game Sounds:
+## Game Sounds
 
 [Zapsplat](https://www.zapsplat.com)
 
-## Game Fonts:
+## Game Fonts
 
 [1001 Fonts - SF Atarian System](https://www.google.com/search?client=safari&rls=en&q=sf+atarian+system&ie=UTF-8&oe=UTF-8)
 
-## Space Background Image:
+## Space Background Image
 
 Google Images
