@@ -5,9 +5,12 @@ import startTitleImg from "../assets/startTitle.png";
 import bluePlanetImg from "../assets/bluePlanet.png";
 import redPlanetImg from "../assets/redPlanet.png";
 
-export class GameStart extends Phaser.Scene {
+export class GameStartL2 extends Phaser.Scene {
   constructor() {
-    super({ key: "GameStart" });
+    super({ key: "GameStartL2" });
+  }
+  init(data) {
+    this.score = data;
   }
   preload() {
     this.load.image("space", spaceImg); // Load Images
@@ -32,7 +35,7 @@ export class GameStart extends Phaser.Scene {
     this.btnPlay.on(
       "pointerup",
       function() {
-        this.scene.start("GamePlayL1");
+        this.scene.start("GamePlayL2", this.score);
       },
       this
     );
@@ -41,16 +44,29 @@ export class GameStart extends Phaser.Scene {
     this.guideText = this.add.text(
       this.game.config.width * 0.495,
       270,
-      "▲ MOVE SHIP UP\n\n▼ MOVE SHIP DOWN\n\n⎵ FIRE LASERS ",
+      "Congrats! You made it to Level 2 ",
       {
         fontFamily: "helvetica",
-        fontSize: 14,
+        fontSize: 22,
         fontStyle: "bold",
         color: "#ffffff",
         align: "left"
       }
     );
     this.guideText.setOrigin(0.5);
+    this.scoreText = this.add.text(
+      this.game.config.width * 0.5,
+      500,
+      "Score: " + this.score,
+      {
+        fontFamily: "SF Atarian System",
+        fontSize: 44,
+        fontStyle: "bold",
+        color: "#ffffff",
+        align: "center"
+      }
+    );
+    this.scoreText.setOrigin(0.5);
   }
   update() {
     this.space.tilePositionX += 0.4; // Move Background

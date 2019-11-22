@@ -51,7 +51,7 @@ export class GameOver extends Phaser.Scene {
     this.btnRestart.on(
       "pointerup",
       function() {
-        this.scene.start("GamePlay", this.score);
+        this.scene.start("GamePlayL1", this.score);
       },
       this
     );

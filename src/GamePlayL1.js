@@ -11,9 +11,9 @@ import asteroidExSnd from "../assets/asteroidExplosion.mp3";
 import shipExSnd from "../assets/shipExplosion.mp3";
 import musicSnd from "../assets/music.mp3";
 
-export class GamePlay extends Phaser.Scene {
+export class GamePlayL1 extends Phaser.Scene {
   constructor() {
-    super({ key: "GamePlay" });
+    super({ key: "GamePlayL1" });
   }
 
   preload() {
@@ -109,18 +109,14 @@ export class GamePlay extends Phaser.Scene {
 
   update() {
     //Set speed of background based on score
-    if (this.score < 1000) {
-      this.space.tilePositionX += 0.4;
-      this.bluePlanet.x -= 0.6;
-      this.redPlanet.x -= 0.8;
-      this.greenPlanet.x -= 1.7;
-    }
+    this.space.tilePositionX += 0.4;
+    this.bluePlanet.x -= 0.6;
+    this.redPlanet.x -= 0.8;
+    this.greenPlanet.x -= 1.7;
 
     if (this.score > 1000) {
-      this.space.tilePositionX += 1.5;
-      this.bluePlanet.x -= 1;
-      this.redPlanet.x -= 2;
-      this.greenPlanet.x -= 4;
+      this.music.stop();
+      this.scene.start("GameStartL2", this.score);
     }
 
     //Add asteroids randomly to stage
@@ -134,11 +130,7 @@ export class GamePlay extends Phaser.Scene {
       asteroid.setVisible(true);
       asteroid.scaleX = Math.floor(Math.random() * 1.3) + 0.5;
       asteroid.scaleY = Math.floor(Math.random() * 1.3) + 0.5;
-      if (this.score < 1000) {
-        asteroid.body.velocity.x = Math.floor(Math.random() * -50) + -200;
-      } else if (this.score > 1000) {
-        asteroid.body.velocity.x = Math.floor(Math.random() * -100) + -400;
-      }
+      asteroid.body.velocity.x = Math.floor(Math.random() * -50) + -200;
 
       asteroid.angle = Math.floor(Math.random() * 180) + -75;
     }
